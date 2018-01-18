@@ -1,0 +1,15 @@
+
+#include "main.h"
+
+void leds_init(void)
+{
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;	/* GPIOD clock enable */
+	GPIOD->MODER &= ~GPIO_MODER_MODE12_1;	/* output mode */
+	GPIOD->MODER |= GPIO_MODER_MODE12_0;	
+	GPIOD->MODER &= ~GPIO_MODER_MODE14_1;	/* output mode */
+	GPIOD->MODER |= GPIO_MODER_MODE14_0;
+	GPIOD->OSPEEDR |= GPIO_OSPEEDR_OSPEED12_1;	/* fast speed */
+	GPIOD->OSPEEDR &= ~GPIO_OSPEEDR_OSPEED12_0;
+	GPIOD->OSPEEDR |= GPIO_OSPEEDR_OSPEED14_1;	/* fast speed */
+	GPIOD->OSPEEDR &= ~GPIO_OSPEEDR_OSPEED14_0;
+}
